@@ -22,8 +22,8 @@ public class Coordinate {
 	
 	// CONSTANTS
 	
-	private static final double RADIUS_EARTH = 6371.0;
-	private static final double KM_PER_NM = 1.852;
+	private static final double RADIUS_EARTH_IN_KM = 6371.0;
+	//private static final double KM_PER_NM = 1.852;
 	
 	private static final double MIN_LAT = -90.0;
 	private static final double MAX_LAT = 90.0;
@@ -90,7 +90,7 @@ public class Coordinate {
 		double lon2 = degreeToRad(other.getLongnitude());
 		double lat2 = degreeToRad(other.getLatitude());
 
-		return RADIUS_EARTH * Math.acos(Math.sin(lat1) * Math.sin(lat2) + Math.cos(lat1) * Math.cos(lat2) * Math.cos(lon2 - lon1));
+		return RADIUS_EARTH_IN_KM * Math.acos(Math.sin(lat1) * Math.sin(lat2) + Math.cos(lat1) * Math.cos(lat2) * Math.cos(lon2 - lon1));
 	}
 	/**
 	 * Rechnet Grad in rad um.
