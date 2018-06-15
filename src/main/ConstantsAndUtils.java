@@ -1,5 +1,9 @@
 package main;
-
+/**
+ * 
+ * @author Etienne Onasch
+ *
+ */
 final class ConstantsAndUtils {
 	private ConstantsAndUtils() {}
 	// Constants

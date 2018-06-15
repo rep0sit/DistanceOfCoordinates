@@ -20,8 +20,7 @@ import static main.ConstantsAndUtils.degreeToRad;
  * 
  * 
  * 
- * @author Etienne Onasch, Nelli Welker
- * 
+ * @author Etienne Onasch
  * 
  */
 public class Coordinates {
