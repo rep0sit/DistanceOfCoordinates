@@ -8,7 +8,8 @@ import static main.ConstantsAndUtils.MIN_LAT;
  * positive latitude implies north), and the South Pole at 90° south (or –90°).
  * Latitude measurements range from 0° to (+/–)90°.
  * <br> Value will be normalized
- * 
+ *
+ * @author Etienne Onasch
  *
  */
 public class Latitude implements LatLonInterface{

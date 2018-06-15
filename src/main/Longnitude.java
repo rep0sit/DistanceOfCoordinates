@@ -6,6 +6,9 @@ import static main.ConstantsAndUtils.MIN_LON;
  * located. The prime meridian runs through Greenwich, England. Longitude
  * measurements range from 0° to (+/–)180°.
  * <br> Value will be normalized
+ *
+ * @author Etienne Onasch
+ *
  */
 public class Longnitude implements LatLonInterface{
 	private final double lon;
