@@ -2,6 +2,7 @@ package main;
 
 import static main.ConstantsAndUtils.BEARING_NORTH_RAD;
 
+import static main.ConstantsAndUtils.ZERO;
 import static main.ConstantsAndUtils.ONE_EIGHTY;
 import static main.ConstantsAndUtils.THREE_SIXTY;
 import static main.ConstantsAndUtils.FIVE_FOURTY;
@@ -41,7 +42,7 @@ public class Square {
 	
 	private final double dist, latRad, lonRad;
 	
-	private double minLat = 0.0, maxLat = 0.0, minLon = 0.0, maxLon = 0.0;
+	private double minLat = ZERO, maxLat = ZERO, minLon = ZERO, maxLon = ZERO;
 
 	
 	
@@ -74,16 +75,31 @@ public class Square {
 	private double normalizeMinusPlus180(double lon) {
 		return (lon + FIVE_FOURTY) % THREE_SIXTY - ONE_EIGHTY;
 	}
-	
+	/**
+	 * The minimum latitude of this square
+	 * @return the minimum latitude of this square
+	 */
 	public double getMinLat() {
 		return radansToDegree(minLat);
 	}
+	/**
+	 * The maximum latitude of this square
+	 * @return the maximum latitude of this square
+	 */
 	public double getMaxLat() {
 		return radansToDegree(maxLat);
 	}
+	/**
+	 * The minimal longnitude of this square
+	 * @return the minimal longnitude of this square
+	 */
 	public double getMinLon() {
 		return normalizeMinusPlus180(radansToDegree(minLon));
 	}
+	/**
+	 * The maximal longnitude of this square
+	 * @return the maximal longnitude of this square
+	 */
 	public double getMaxLon() {
 		return normalizeMinusPlus180(radansToDegree(maxLon));
 	}
