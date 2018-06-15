@@ -1,5 +1,10 @@
 package main;
 
+import static main.Constants.MAX_LAT;
+import static main.Constants.MAX_LON;
+import static main.Constants.MIN_LAT;
+import static main.Constants.MIN_LON;
+import static main.Constants.RADIUS_EARTH_IN_KM;
 /**
  * 
  * PRECONDITION:<br><br>
@@ -20,16 +25,6 @@ package main;
  */
 public class Coordinate {
 	
-	// CONSTANTS
-	
-	private static final double RADIUS_EARTH_IN_KM = 6371.0;
-	//private static final double KM_PER_NM = 1.852;
-	
-	private static final double MIN_LAT = -90.0;
-	private static final double MAX_LAT = 90.0;
-	
-	private static final double MIN_LON = -180.0;
-	private static final double MAX_LON = 180.0;
 	
 
 	/**
@@ -53,6 +48,13 @@ public class Coordinate {
 		this.latitude = latitude < MIN_LAT ? MIN_LAT : latitude > MAX_LAT ? MAX_LAT : latitude;
 		this.longnitude = longnitude < MIN_LON ? MIN_LON : longnitude > MAX_LON ? MAX_LON : longnitude;
 	}
+	
+	
+	public Coordinate(Latitude lat, Longnitude lon) {
+		this(lat.getLat(), lon.getLon());
+	}
+	
+	
 
 	/**
 	 * Entfernung (in km) zwischen zwei Punkten auf der Erdoberfläche:<br><br>
@@ -92,6 +94,20 @@ public class Coordinate {
 
 		return RADIUS_EARTH_IN_KM * Math.acos(Math.sin(lat1) * Math.sin(lat2) + Math.cos(lat1) * Math.cos(lat2) * Math.cos(lon2 - lon1));
 	}
+	
+	/**
+	 * Gibt an, ob sich die beiden Koordinaten in einer bestimmten
+	 * Entfernung zueinander befinden
+	 * @param other die andere Koordinate
+	 * @param radius der Radius der um diese Koordinaten einen Kreis beschreibt
+	 * fuer den geprueft wird, ob die uebergebenen Koordinaten in ihm liegen
+	 * @return true wenn die Distanz zwischen den jeweiligen Koordinaten kleiner gleich dem radius ist.
+	 * sonst false.
+	 */
+	public boolean isInRadius(Coordinate other, double radius) {
+		return getDistanceInKM(other) <= radius;
+	}
+	
 	/**
 	 * Rechnet Grad in rad um.
 	 * @param degree die Gradzahl
