@@ -1,6 +1,10 @@
 package main;
 
 import static main.ConstantsAndUtils.BEARING_NORTH_RAD;
+
+import static main.ConstantsAndUtils.ONE_EIGHTY;
+import static main.ConstantsAndUtils.THREE_SIXTY;
+import static main.ConstantsAndUtils.FIVE_FOURTY;
 import static main.ConstantsAndUtils.BEARING_SOUTH_RAD;
 import static main.ConstantsAndUtils.BEARING_WEST_RAD;
 import static main.ConstantsAndUtils.BEARING_EAST_RAD;
@@ -68,7 +72,7 @@ public class Square {
 	}
 	
 	private double normalizeMinusPlus180(double lon) {
-		return (lon + 540.0) % 360.0 - 180.0;
+		return (lon + FIVE_FOURTY) % THREE_SIXTY - ONE_EIGHTY;
 	}
 	
 	public double getMinLat() {
