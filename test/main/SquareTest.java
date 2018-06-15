@@ -70,7 +70,19 @@ public class SquareTest {
 
 	@Test
 	public void testGetMaxLon() {
-		fail("Not yet implemented");
+		Coordinates alpha = new Coordinates(0.0, 179.5);
+		Coordinates bravo = new Coordinates(0.0, -179.5);
+		double dist = alpha.getDistanceInKM(bravo);
+		Square s = new Square(alpha, dist);
+	
+		assertEquals(s.getMaxLon(), bravo.getLongnitude(), DELTA);
+		
+		alpha = new Coordinates(0.0, 33.3);
+		bravo = new Coordinates(0.0, 34.3);
+		dist = alpha.getDistanceInKM(bravo);
+		s = new Square(alpha, dist);
+	
+		assertEquals(s.getMaxLon(), bravo.getLongnitude(), DELTA);
 	}
 
 }
