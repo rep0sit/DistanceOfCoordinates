@@ -1,6 +1,6 @@
 package main;
-import static main.Constants.MAX_LAT;
-import static main.Constants.MIN_LAT;
+import static main.ConstantsAndUtils.MAX_LAT;
+import static main.ConstantsAndUtils.MIN_LAT;
 
 /**
  * Latitude measures how far north or south of the equator a place is located.
@@ -11,7 +11,7 @@ import static main.Constants.MIN_LAT;
  * 
  *
  */
-public class Latitude {
+public class Latitude implements LatLonInterface{
 	private final double lat;
 	/**
 	 * Constructor for a Latitude instance.<br>
@@ -22,7 +22,8 @@ public class Latitude {
 		this.lat = lat < MIN_LAT ? MIN_LAT : lat > MAX_LAT ? MAX_LAT : lat;
 	}
 	
-	public double getLat() {
+	@Override
+	public double getVal() {
 		return lat;
 	}
 }

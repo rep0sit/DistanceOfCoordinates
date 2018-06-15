@@ -1,13 +1,13 @@
 package main;
-import static main.Constants.MAX_LON;
-import static main.Constants.MIN_LON;
+import static main.ConstantsAndUtils.MAX_LON;
+import static main.ConstantsAndUtils.MIN_LON;
 /**
  * Longitude measures how far east or west of the prime meridian a place is
  * located. The prime meridian runs through Greenwich, England. Longitude
  * measurements range from 0° to (+/–)180°.
  * <br> Value will be normalized
  */
-public class Longnitude {
+public class Longnitude implements LatLonInterface{
 	private final double lon;
 	
 	/**
@@ -18,7 +18,8 @@ public class Longnitude {
 		this.lon = lon < MIN_LON ? MIN_LON : lon > MAX_LON ? MAX_LON : lon;
 	}
 	
-	public double getLon() {
+	@Override
+	public double getVal() {
 		return lon;
 	}
 	

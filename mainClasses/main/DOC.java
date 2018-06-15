@@ -39,8 +39,8 @@ public class DOC {
 		}
 		
 		
-		Coordinate c1 = new Coordinate(lat1, lon1);
-		Coordinate c2 = new Coordinate(lat2, lon2);
+		Coordinates c1 = new Coordinates(lat1, lon1);
+		Coordinates c2 = new Coordinates(lat2, lon2);
 		double dist = c1.getDistanceInKM(c2);
 		
 		

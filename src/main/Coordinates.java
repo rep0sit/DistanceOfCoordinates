@@ -1,10 +1,11 @@
 package main;
 
-import static main.Constants.MAX_LAT;
-import static main.Constants.MAX_LON;
-import static main.Constants.MIN_LAT;
-import static main.Constants.MIN_LON;
-import static main.Constants.RADIUS_EARTH_IN_KM;
+import static main.ConstantsAndUtils.MAX_LAT;
+import static main.ConstantsAndUtils.MAX_LON;
+import static main.ConstantsAndUtils.MIN_LAT;
+import static main.ConstantsAndUtils.MIN_LON;
+import static main.ConstantsAndUtils.RADIUS_EARTH_IN_KM;
+import static main.ConstantsAndUtils.degreeToRad;
 /**
  * 
  * PRECONDITION:<br><br>
@@ -23,7 +24,7 @@ import static main.Constants.RADIUS_EARTH_IN_KM;
  * 
  * 
  */
-public class Coordinate {
+public class Coordinates {
 	
 	
 
@@ -44,14 +45,14 @@ public class Coordinate {
 	 */
 	private final double longnitude;
 
-	public Coordinate(double latitude, double longnitude) {
+	public Coordinates(double latitude, double longnitude) {
 		this.latitude = latitude < MIN_LAT ? MIN_LAT : latitude > MAX_LAT ? MAX_LAT : latitude;
 		this.longnitude = longnitude < MIN_LON ? MIN_LON : longnitude > MAX_LON ? MAX_LON : longnitude;
 	}
 	
 	
-	public Coordinate(Latitude lat, Longnitude lon) {
-		this(lat.getLat(), lon.getLon());
+	public Coordinates(Latitude lat, Longnitude lon) {
+		this(lat.getVal(), lon.getVal());
 	}
 	
 	
@@ -84,7 +85,7 @@ public class Coordinate {
 	 * @param other die Andere Koordinate
 	 * @return die Entfernung zwischen beiden Koordinaten in KM
 	 */
-	public double getDistanceInKM(Coordinate other) {
+	public double getDistanceInKM(Coordinates other) {
 		
 		double lon1 = degreeToRad(longnitude);
 		double lat1 = degreeToRad(latitude);
@@ -95,6 +96,13 @@ public class Coordinate {
 		return RADIUS_EARTH_IN_KM * Math.acos(Math.sin(lat1) * Math.sin(lat2) + Math.cos(lat1) * Math.cos(lat2) * Math.cos(lon2 - lon1));
 	}
 	
+	
+	
+	public Square getSquareOf(double kilometers){
+		return null;
+	}
+	
+	
 	/**
 	 * Gibt an, ob sich die beiden Koordinaten in einer bestimmten
 	 * Entfernung zueinander befinden
@@ -104,18 +112,11 @@ public class Coordinate {
 	 * @return true wenn die Distanz zwischen den jeweiligen Koordinaten kleiner gleich dem radius ist.
 	 * sonst false.
 	 */
-	public boolean isInRadius(Coordinate other, double radius) {
+	public boolean isInRadius(Coordinates other, double radius) {
 		return getDistanceInKM(other) <= radius;
 	}
 	
-	/**
-	 * Rechnet Grad in rad um.
-	 * @param degree die Gradzahl
-	 * @return die Gradzahl umgerechnet in rad
-	 */
-	private double degreeToRad(double degree) {
-		return degree * Math.PI / 180.0;
-	}
+
 	/**
 	 * Gibt den Laengengrade dieser Koordinate zurueck
 	 * @return longnitude bzw. Laengengrad
